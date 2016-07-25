@@ -27,8 +27,56 @@ import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
 
-public class UI implements Observer{
-
+public class UI implements Observer
+{
+	private static int FULLW = 4;
+	private static int THREE_QUARTW = 3;
+	private static int HALFW = 2;
+	private static int QUARTW = 1;
+	private static int FIELDS = 1;
+	
+	private static int FNAMEY = FIELDS;
+	private static int LNAMEY = FNAMEY;
+	private static int PHONEY = FIELDS + 2;
+	private static int EMAILY = FIELDS + 4;
+	private static int SCHOOLY = FIELDS + 6;
+	private static int EDUY = FIELDS + 8;
+	private static int SYEARY = FIELDS +10;
+	private static int SMONTHY = SYEARY;
+	private static int EYEARY = SYEARY;
+	private static int EMONTHY = SYEARY;
+	private static int LASTFIELDY = EMONTHY;
+	
+	private static int FNAMEX = 0;
+	private static int LNAMEX = 2;
+	private static int PHONEX = 0;
+	private static int EMAILX = 0;
+	private static int SCHOOLX = 0;
+	private static int EDUX = 0;
+	private static int SYEARX = 0;
+	private static int SMONTHX = 1;
+	private static int EYEARX = 2;
+	private static int EMONTHX = 3;
+	
+	private static int FNAMEW = HALFW;
+	private static int LNAMEW = HALFW;
+	private static int PHONEW = FULLW;
+	private static int EMAILW = FULLW;
+	private static int SCHOOLW = FULLW;
+	private static int EDUW = FULLW;
+	private static int SYEARW = QUARTW;
+	private static int SMONTHW = QUARTW; 
+	private static int EYEARW = QUARTW;
+	private static int EMONTHW = QUARTW;
+	
+	private static int LOCATION = LASTFIELDY +1;
+	
+	private static int ROW1 = 0;
+	private static int ROW2 = 1;
+	private static int ROW3 = 2;
+	private static int JOBS = 40;
+	
+	
 	LinkedBlockingQueue<User> userFIFO;
 	final Text actiontarget;
     VBox userUIList = new VBox();
@@ -62,57 +110,59 @@ public class UI implements Observer{
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(scenetitle, 0, 0, 4, 1);
 
+        
+        System.out.println(LNAMEW);
         Label firstName = new Label("Förnamn:");
         TextField firstNameTextField = new TextField();
-        grid.add(firstName, 0, 1, 2, 1);
-        grid.add(firstNameTextField, 0, 2, 2, 1);
+        grid.add(firstName, 			FNAMEX, 	FNAMEY, 	FNAMEW, 1);
+        grid.add(firstNameTextField, 	FNAMEX, 	FNAMEY+1,	FNAMEW, 1);
         
         Label lastName = new Label("Efternamn:");
         TextField lastNameTextField = new TextField();
-        grid.add(lastName, 2, 1, 2, 1);
-        grid.add(lastNameTextField, 2, 2, 2, 1);
+        grid.add(lastName, 				LNAMEX, 	LNAMEY, 	LNAMEW, 1);
+        grid.add(lastNameTextField, 	LNAMEX, 	LNAMEY+1, 	LNAMEW, 1);
         
         Label phoneNumber = new Label("Telefonnummer:");
         TextField phoneNumberTextField = new TextField();
-        grid.add(phoneNumber, 0, 3, 4, 1);
-        grid.add(phoneNumberTextField, 0, 4, 4, 1);
+        grid.add(phoneNumber, 			PHONEX, 	PHONEY, 	PHONEW, 1);
+        grid.add(phoneNumberTextField, 	PHONEX, 	PHONEY+1, 	PHONEW, 1);
         
         Label email = new Label("E-mail:");
         TextField emailTextField = new TextField();
-        grid.add(email, 0, 5, 2, 1);
-        grid.add(emailTextField, 0, 6, 4, 1);
+        grid.add(email, 				EMAILX, 	EMAILY, 	EMAILW, 1);
+        grid.add(emailTextField, 		EMAILX, 	EMAILY+1, 	EMAILW, 1);
         
         Label school = new Label("Skola:"); 
         TextField schoolTextField = new TextField();
-        grid.add(school, 0, 7, 2, 1);
-        grid.add(schoolTextField, 0, 8, 4, 1);
+        grid.add(school, 				SCHOOLX, 	SCHOOLY, 	SCHOOLW, 1);
+        grid.add(schoolTextField, 		SCHOOLX, 	SCHOOLY+1, 	SCHOOLW, 1);
         
         Label education = new Label("Utbildning:");       
         TextField educationTextField = new TextField();
-        grid.add(education, 0, 9, 2, 1);
-        grid.add(educationTextField, 0, 10, 4, 1);
+        grid.add(education, 			EDUX, 		EDUY, 		EDUW, 1);
+        grid.add(educationTextField, 	EDUX, 		EDUY+1, 	EDUW, 1);
         
         Label startYear = new Label ("Start år:");
         Label startMonth = new Label ("Start månad:");
         Label endYear = new Label ("Sista år:");
         Label endMonth = new Label ("Sista månad:");
-        grid.add(startYear, 0, 11);
-        grid.add(startMonth, 1, 11);
-        grid.add(endYear, 2, 11);
-        grid.add(endMonth, 3, 11);
+        grid.add(startYear, 	SYEARX, 	SYEARY);
+        grid.add(startMonth, 	SMONTHX,	SMONTHY);
+        grid.add(endYear, 		EYEARX, 	EYEARY);
+        grid.add(endMonth, 		EMONTHX, 	EMONTHY);
         
         TextField startYearTextField = new TextField();
         TextField startMonthTextField = new TextField();
         TextField endYearTextField = new TextField();
         TextField endMonthTextField = new TextField();
-        grid.add(startYearTextField, 0, 12);
-        grid.add(startMonthTextField, 1, 12);
-        grid.add(endYearTextField, 2, 12);
-        grid.add(endMonthTextField, 3, 12);
+        grid.add(startYearTextField, 	SYEARX, 	SYEARY+1);
+        grid.add(startMonthTextField, 	SMONTHX, 	SMONTHY+1);
+        grid.add(endYearTextField, 		EYEARX, 	EYEARY+1);
+        grid.add(endMonthTextField, 	EMONTHX, 	EMONTHY+1);
         
         Label location = new Label("Område");
         location.setFont(Font.font("Tahoma", FontWeight.BOLD, 15));
-        grid.add(location,0, 13, 2, 1);
+        grid.add(location,0, LOCATION, 2, 1);
         
         CheckBox Blekinge = new CheckBox("Blekinge län");        		// Blekinge län = 0
         CheckBox Dalarna = new CheckBox("Dalarnas län");        		// Dalarnas län = 9

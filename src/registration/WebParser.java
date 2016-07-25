@@ -75,7 +75,7 @@ public class WebParser implements Runnable {
 		this.userFIFO = userFIFO;
 		
         driver.get("https://www.academicwork.se/login");
-		driver.findElement(By.xpath("//div[@id='cookie-message-content']/div[2]/button")).click();
+		//driver.findElement(By.xpath("//div[@id='cookie-message-content']/div[2]/button")).click();  //Finding cookie-info banner
 
 
 	}
@@ -165,7 +165,7 @@ public class WebParser implements Runnable {
 	{
 		driver.get("https://www.academicwork.se/my-profile/cv");
 		
-		driver.findElement(By.xpath("//div[@id='cv-educations']/header/nav/a")).click();
+		driver.findElement(By.xpath("//div[@id='cv-educations']/header/nav/a")).click(); //"Lägg till" button for Utbildning
 		WebElement schoolField = driver.findElement(By.id("School"));
 		WebElement educationField = driver.findElement(By.id("Subject"));
 		Select startYearField = new Select(driver.findElement(By.name("StartYear")));
@@ -186,14 +186,14 @@ public class WebParser implements Runnable {
 	
 	public void register(User user)
 	{
-        driver.get("https://www.academicwork.se/login");
+        driver.get("https://www.academicwork.se/register");
         
-        WebElement emailField = driver.findElement(By.id("RegistrationViewModel_Email"));
-        WebElement passwordField = driver.findElement(By.id("RegistrationViewModel_Password"));
-        WebElement firstNameField = driver.findElement(By.id("RegistrationViewModel_FirstName"));
-        WebElement lastNameField = driver.findElement(By.id("RegistrationViewModel_LastName"));
-        WebElement phoneNumberField = driver.findElement(By.id("RegistrationViewModel_MobileNo"));
-        WebElement PUL = driver.findElement(By.id("RegistrationViewModel_HasAgreedToPUL"));
+        WebElement emailField = driver.findElement(By.id("registration-form-email"));
+        WebElement passwordField = driver.findElement(By.id("registration-form-password"));
+        WebElement firstNameField = driver.findElement(By.id("registration-form-firstname"));
+        WebElement lastNameField = driver.findElement(By.id("registration-form-lastname"));
+        WebElement phoneNumberField = driver.findElement(By.id("MobileNo"));
+        WebElement PUL = driver.findElement(By.id("HasAgreedToPUL"));
         
         emailField.sendKeys(user.email);
         passwordField.sendKeys(user.password);

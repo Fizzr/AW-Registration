@@ -14,9 +14,9 @@ public class Main extends Application
 	
 	public static void main(String[] args) 
 	{	
-		WebParser web = new WebParser(UserFIFO);
-		t = new Thread(web);
-		t.start();
+		//WebParser web = new WebParser(UserFIFO);
+		//t = new Thread(web);
+		//t.start();
 		launch(args);
 	}
 
@@ -30,7 +30,7 @@ public class Main extends Application
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	          public void handle(WindowEvent we) 
 	          {
-	        	  t.interrupt();
+	        	  //t.interrupt();
 	          }
 		});
 	}
